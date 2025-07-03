@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按钮锁定与解锁</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button.locked {
+            background-color: gray;
+            color: white;
+            cursor: not-allowed;
+        }
+        button.unlocked {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<button id="toggleButton" class="unlocked">解锁</button>
+
+<script>
+    const button = document.getElementById('toggleButton');
+
+    button.addEventListener('click', () => {
+        if (button.classList.contains('unlocked')) {
+            button.classList.remove('unlocked');
+            button.classList.add('locked');
+            button.textContent = '锁定';
+            button.disabled = true; // 锁定后禁用按钮
+            setTimeout(() => {
+                button.disabled = false; // 模拟解锁
+                button.classList.remove('locked');
+                button.classList.add('unlocked');
+                button.textContent = '解锁';
+            }, 3000); // 3秒后自动解锁
+        }
+    });
+</script>
+</body>
+</html>

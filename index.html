@@ -13,6 +13,8 @@
     <script src="./lib/abcjs-basic-min.js"></script>
     <script src="./lib/html2canvas.min.js"></script>
     <script src="./js/RandomRhythms.js"></script>
+    <script src="./js/loading.js"></script>
+    <script src="./js/lockGenerate.js"></script>
     <script src="./js/index.js"></script>
 </head>
 
@@ -24,14 +26,16 @@
     <div class="instructions">
         <h3>使用说明</h3>
         <ul>
-            <li>选择要生成的小节数量（1-8小节）</li>
+            <li>选择要生成的小节数量</li>
             <li>点击"生成节奏"按钮</li>
-            <li>该网页不保存数据，需要保存请使用"保存为图片"按钮</li>
+            <li>锁定后生成按钮禁用</li>
+            <li>若不需要重新生成，网页会保存上次生成内容</li>
+            <li>需要保存请使用"保存为图片"按钮</li>
         </ul>
     </div>
 
     <div class="controls">
-        <div class="control-group">
+        <div class="control-group-select">
             <label for="measure-count">小节数量：</label>
             <select id="measure-count">
                 <option value="1">1 小节</option>
@@ -45,11 +49,30 @@
         </div>
 
 
-        <div class="control-group">
-            <button class="click-button" onclick="generateRandomRhythm()">生成节奏</button>
-            <button class="click-button" onclick="saveImg()">保存为图片</button>
+        <div class="control-group-button">
+            <div class="button-container">
+                <button id="generatedButton" class="action-button"
+                        onclick="loadButton( 'generatedButton',() => generateRandomRhythm())">
+                    <span class="spinner"></span>
+                    生成节奏
+                </button>
+                <button id="lockButton" class="lock-button"
+                        onclick="lockOrUnlockGenerated()">
+                    <img id="lock-icon" class="unlock" src="./image/unlock.png"/>
+                </button>
+                <button id="saveImgButton" class="action-button"
+                        onclick="loadButton('saveImgButton',() => saveImg())">
+                    <span class="spinner"></span>
+                    保存为图片
+                </button>
+            </div>
+            <div class="button-container">
+
+            </div>
         </div>
+
     </div>
+
 
     <div id="target"></div>
 
@@ -57,7 +80,8 @@
     <div class="img-container"></div>
 </div>
 <script>
-    generateRandomRhythm()
+    initGenerateActionsLockStatus()
+    initPage()
 </script>
 </body>
 </html>

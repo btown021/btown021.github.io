@@ -29,9 +29,16 @@ h1 {
     margin-bottom: 20px;
 }
 
-.control-group {
+.control-group-select {
+    flex: 1;
+    min-width: 15px;
+    max-width: 27%;
+}
+
+.control-group-button {
     flex: 1;
     min-width: 200px;
+    max-width: 70%;
 }
 
 label {
@@ -46,23 +53,6 @@ select {
     border: 1px solid #ddd;
     border-radius: 4px;
     background: white;
-}
-
-button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    margin-top: 10px;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #2980b9;
 }
 
 textarea {
@@ -103,4 +93,98 @@ textarea {
 }
 .img-container {
     display: none;
+}
+
+
+.button-container {
+    margin: 0 0;
+    /*width: 30%;*/
+}
+
+.action-button {
+    position: relative;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 40%;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+    overflow: hidden;
+    margin-top: 25px
+}
+
+.action-button:hover {
+    /*transform: translateY(-3px);*/
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+}
+
+.action-button:active {
+    transform: translateY(1px);
+}
+
+/* 禁用状态 */
+.action-button.disabled {
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+    cursor: not-allowed;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-left: 60px;
+}
+
+/* 旋转动画 */
+.spinner {
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+.disabled .spinner {
+    display: block;
+}
+
+
+
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.lock-action {
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+    cursor: not-allowed;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*padding-left: 60px;*/
+    /*width: 38%;*/
+    /*display: block;*/
+}
+
+.lock-button {
+    /*position: relative;*/
+    background: #c1c1bf;
+    /*color: white;*/
+    border: none;
+    padding: 2px 2px;
+    /*font-size: 13px;*/
+
+    width: 10%;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+    overflow: hidden;
+
+}
+.lock-icon {
+
 }
