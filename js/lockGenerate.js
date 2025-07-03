@@ -26,7 +26,8 @@ function lockGenerateActions() {
 
 
 function initGenerateActionsLockStatus() {
-    if (window.localStorage.getItem("generateActionLock")) {
+    if (window.localStorage.getItem("generateActionLock") === 'true') {
+        console.log("init lock")
         lockGenerateActions()
     }
 }

@@ -19,6 +19,8 @@ async function initPage() {
     if (measureCount && rhythmContent) {
         renderAbsTab(rhythmContent)
         document.getElementById('measure-count').value = measureCount
+    } else {
+        getRandomElement()
     }
 }
 

@@ -75,7 +75,7 @@ function formartABCContent(content) {
     // 2. 将数组分割为每组最多4个元素的子数组
 
     let chunkedArray = []
-    const chunkSize = 3
+    const chunkSize = 2
 
     for (let i = 0; i < splitArray.length; i += chunkSize) {
         chunkedArray.push(splitArray.slice(i, i + chunkSize));
