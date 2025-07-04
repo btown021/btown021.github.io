@@ -1,60 +1,60 @@
 // 初始化节奏映射
 const rhythmABCMap = {
     "xxxx": "z4",
-    "-xxx": "-C, z3",
-    "--xx": "-C,2 z2",
-    "---x": "-C,3 z",
-    "----": "-C,",
-    "oxxx": "C, z3",
-    "o-xx": "C,2 z2",
-    "o--x": "C,3 z",
-    "o---": "C,",
-    "xoxx": "z C, z2",
-    "xo-x": "z C,2 z",
-    "xo--": "z C,3",
-    "-oxx": "-C, C, z2",
-    "-o-x": "-C, C,2 z",
-    "-o--": "-C, C,3",
-    "xxox": "z2 C, z",
-    "xxo-": "z2 C,2",
-    "-xox": "-C, z C, z",
-    "-xo-": "-C, z C,2",
-    "--ox": "-C,2 C, z",
-    "--o-": "-C,2 C,2",
-    "xxxo": "z3 C,",
-    "-xxo": "-C, z2 C,",
-    "--xo": "-C,2 z C,",
-    "---o": "-C,3 C,",
-    "ooxx": "C, C, z2",
-    "oo-x": "C, C,2 z",
-    "oo--": "C, C,3",
-    "xoox": "z C, C, z",
-    "xoo-": "z C, C,2",
-    "-oox": "-C, C, C, z",
-    "-oo-": "-C, C, C,2",
-    "xxoo": "z2 C, C,",
-    "-xoo": "-C, z C, C,",
-    "--oo": "-C,2 C, C,",
-    "oxox": "C, z C, z",
-    "o-o-": "C,2 C,2",
-    "oxo-": "C, z C,2",
-    "o-ox": "C,2 C, z",
-    "xoxo": "z C, z C,",
-    "xo-o": "z C,2 C,",
-    "-oxo": "-C, C, z C,",
-    "-o-o": "-C, C,2 C,",
-    "oxxo": "C, z2 C,",
-    "o-xo": "C,2 z C,",
-    "o--o": "C,3 C,",
-    "ooox": "C, C, C, z",
-    "ooo-": "C, C, C,2",
-    "xooo": "z C, C, C,",
-    "-ooo": "-C, C, C, C,",
-    "oxoo": "C, z C, C,",
-    "o-oo": "C,2 C, C,",
-    "ooxo": "C, C, z C,",
-    "oo-o": "C, C,2 C,",
-    "oooo": "C, C, C, C,"
+    "-xxx": "-C,z3",
+    "--xx": "-C,2z2",
+    "---x": "-C,3z",
+    "----": "-C,4",
+    "oxxx": "C,z3",
+    "o-xx": "C,2z2",
+    "o--x": "C,3z",
+    "o---": "C,4",
+    "xoxx": "zC,z2",
+    "xo-x": "zC,2z",
+    "xo--": "zC,3",
+    "-oxx": "-C,C,z2",
+    "-o-x": "-C,C,2z",
+    "-o--": "-C,C,3",
+    "xxox": "z2C,z",
+    "xxo-": "z2C,2",
+    "-xox": "-C,zC,z",
+    "-xo-": "-C,zC,2",
+    "--ox": "-C,2C,z",
+    "--o-": "-C,2C,2",
+    "xxxo": "z3C,",
+    "-xxo": "-C,z2C,",
+    "--xo": "-C,2zC,",
+    "---o": "-C,3C,",
+    "ooxx": "C,C,z2",
+    "oo-x": "C,C,2z",
+    "oo--": "C,C,3",
+    "xoox": "zC,C,z",
+    "xoo-": "zC,C,2",
+    "-oox": "-C,C,C,z",
+    "-oo-": "-C,C,C,2",
+    "xxoo": "z2C,C,",
+    "-xoo": "-C,zC,C,",
+    "--oo": "-C,2C,C,",
+    "oxox": "C,zC,z",
+    "o-o-": "C,2C,2",
+    "oxo-": "C,zC,2",
+    "o-ox": "C,2C,z",
+    "xoxo": "zC,zC,",
+    "xo-o": "zC,2C,",
+    "-oxo": "-C,C,zC,",
+    "-o-o": "-C,C,2C,",
+    "oxxo": "C,z2C,",
+    "o-xo": "C,2zC,",
+    "o--o": "C,3C,",
+    "ooox": "C,C,C,z",
+    "ooo-": "C,C,C,2",
+    "xooo": "zC,C,C,",
+    "-ooo": "-C,C,C,C,",
+    "oxoo": "C,zC,C,",
+    "o-oo": "C,2C,C,",
+    "ooxo": "C,C,zC,",
+    "oo-o": "C,C,2C,",
+    "oooo": "C,C,C,C,"
 };
 
 // 获取随机元素
@@ -100,9 +100,6 @@ function generateRandomRhythmsABC(beatsNumber) {
     let subsectionsNum = beatsNumber * 4
     // 总定义节奏数
     let rhythmList = Object.keys(rhythmABCMap)
-    let allRhythmNum = rhythmList.length
-
-
     let beatContentArr = new Array(subsectionsNum)
 
     // 循环生成节奏
@@ -130,23 +127,13 @@ function generateRandomRhythmsABC(beatsNumber) {
     let abcContent = rhythmABCMap[beatContentArr[0]]
 
     for (var i = 1; i < beatContentArr.length; i++) {
-        if (!beatContentArr[i].startsWith("-") && !abcContent.endsWith("|")) {
-            abcContent += ""
-        }
+        abcContent += " "
 
         abcContent += rhythmABCMap[beatContentArr[i]]
 
-        if (i != beatContentArr.length - 1) {
-            if ((i + 1) % 4 == 0) {
-                if (beatContentArr[i + 1].startsWith("-")) {
-                    abcContent += "-|"
-                    var s = rhythmABCMap[beatContentArr[i + 1]]
-                    abcContent += s.substring(1)
-                    i++;
-                } else {
-                    abcContent += "|"
-                }
-            }
+
+        if ((i + 1) % 4 == 0 && i != beatContentArr.length - 1) {
+            abcContent += "|"
         }
 
     }

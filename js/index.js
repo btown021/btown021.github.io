@@ -20,7 +20,7 @@ async function initPage() {
         renderAbsTab(rhythmContent)
         document.getElementById('measure-count').value = measureCount
     } else {
-        getRandomElement()
+        generateRandomRhythm()
     }
 }
 
